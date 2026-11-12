@@ -1,0 +1,299 @@
+{
+  "_README": "ALL DATA BELOW IS SYNTHETIC AND ILLUSTRATIVE. It does not describe any real institution, system or attack. Money is in synthetic USD millions. Edit freely: nodes, edges, numbers and scenario texts are read from this file only.",
+  "currency_label": "synthetic USD millions",
+  "model": {
+    "K_teams": 3,
+    "lambda_contagion": 0.5,
+    "mu_disruption": 1.0,
+    "penalty_A": 100.0
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "name": "Central Bank RTGS",
+      "short": "RTGS",
+      "base_risk": 70,
+      "disruption": 45,
+      "pos": [
+        0.5,
+        0.9
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Commercial Bank A",
+      "short": "Bank A",
+      "base_risk": 45,
+      "disruption": 15,
+      "pos": [
+        0.12,
+        0.68
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Commercial Bank B",
+      "short": "Bank B",
+      "base_risk": 35,
+      "disruption": 12,
+      "pos": [
+        0.88,
+        0.68
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Commercial Bank C",
+      "short": "Bank C",
+      "base_risk": 25,
+      "disruption": 8,
+      "pos": [
+        0.3,
+        0.5
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Payment Switch",
+      "short": "Switch",
+      "base_risk": 55,
+      "disruption": 18,
+      "pos": [
+        0.7,
+        0.5
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Card Processor",
+      "short": "Cards",
+      "base_risk": 30,
+      "disruption": 10,
+      "pos": [
+        0.9,
+        0.28
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Clearing House",
+      "short": "Clearing",
+      "base_risk": 75,
+      "disruption": 30,
+      "pos": [
+        0.1,
+        0.32
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Cloud Provider",
+      "short": "Cloud",
+      "base_risk": 50,
+      "disruption": 25,
+      "pos": [
+        0.5,
+        0.28
+      ]
+    },
+    {
+      "id": 8,
+      "name": "ATM Network",
+      "short": "ATMs",
+      "base_risk": 15,
+      "disruption": 3,
+      "pos": [
+        0.68,
+        0.08
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Mobile Wallet Gateway",
+      "short": "Wallet",
+      "base_risk": 20,
+      "disruption": 5,
+      "pos": [
+        0.32,
+        0.08
+      ]
+    }
+  ],
+  "_edges_note": "w = extra loss (synthetic USD millions) if BOTH ends of the link are left uncontained and the attack spreads along it.",
+  "edges": [
+    [
+      0,
+      1,
+      10
+    ],
+    [
+      0,
+      2,
+      8
+    ],
+    [
+      0,
+      3,
+      6
+    ],
+    [
+      0,
+      4,
+      6
+    ],
+    [
+      0,
+      6,
+      18
+    ],
+    [
+      0,
+      7,
+      3
+    ],
+    [
+      1,
+      2,
+      8
+    ],
+    [
+      1,
+      3,
+      5
+    ],
+    [
+      2,
+      3,
+      5
+    ],
+    [
+      1,
+      4,
+      9
+    ],
+    [
+      2,
+      4,
+      9
+    ],
+    [
+      3,
+      4,
+      6
+    ],
+    [
+      1,
+      6,
+      9
+    ],
+    [
+      2,
+      6,
+      7
+    ],
+    [
+      3,
+      6,
+      5
+    ],
+    [
+      4,
+      5,
+      14
+    ],
+    [
+      4,
+      8,
+      8
+    ],
+    [
+      4,
+      9,
+      9
+    ],
+    [
+      4,
+      7,
+      12
+    ],
+    [
+      5,
+      1,
+      5
+    ],
+    [
+      5,
+      7,
+      10
+    ],
+    [
+      7,
+      1,
+      9
+    ],
+    [
+      7,
+      2,
+      7
+    ],
+    [
+      7,
+      3,
+      7
+    ],
+    [
+      7,
+      6,
+      8
+    ],
+    [
+      7,
+      8,
+      5
+    ],
+    [
+      7,
+      9,
+      11
+    ]
+  ],
+  "_scenarios_note": "Only the risk values r_i change between scenarios: r_i = base_risk * multiplier (default 1.0).",
+  "scenarios": {
+    "A": {
+      "title": "Cloud provider compromise",
+      "narrative": "An attacker gains control of the shared cloud provider that many banks and payment services rely on. Everything that runs on it is exposed at once, so the cloud and its closest dependants become the most dangerous nodes. The crisis unit must decide where its three teams do the most good in the first hour.",
+      "multipliers": {
+        "7": 4.0,
+        "1": 1.3,
+        "2": 1.3,
+        "3": 1.3,
+        "4": 1.4,
+        "5": 1.4,
+        "9": 1.6
+      }
+    },
+    "B": {
+      "title": "Payment switch DDoS",
+      "narrative": "A flood of traffic knocks the payment switch offline and threatens to spill over to card processing, ATMs and mobile wallets that route through it. Customers cannot pay, so losses grow with every minute. Teams must be placed to stop the spread without switching off too much service.",
+      "multipliers": {
+        "4": 4.0,
+        "5": 2.5,
+        "8": 4.0,
+        "9": 3.0,
+        "1": 1.2,
+        "2": 1.2
+      }
+    },
+    "C": {
+      "title": "Clearing house ransomware",
+      "narrative": "Ransomware encrypts systems at the clearing house, which settles obligations between banks and the central bank. Settlement stalls and the infection can travel to the connected banks and the RTGS. The first-hour choice is which three nodes to wall off.",
+      "multipliers": {
+        "6": 4.0,
+        "0": 2.2,
+        "1": 1.5,
+        "2": 1.5,
+        "3": 1.5
+      }
+    }
+  }
+}
