@@ -48,7 +48,7 @@ Instances where P(optimal) beat random sampling: p=1 in 6 of 20, p=2 in 18 of 20
 Brute force about 0.014 s, greedy about 0.0004 s, simulated annealing about 0.3 s, QAOA 1.3-3.8 s (all restarts, simulator). All classical methods matched the exact optimum. **Brute force wins at 10 qubits; no quantum speedup is claimed.**
 
 ## Penalty sweep (`penalty_sweep.csv`, `penalty_sweep.png`)
-Scenario A, A from 0.5x to 8x the smallest working penalty (29 to 464), p = 1, 2, 3, 4 restarts each. Below 58 the QUBO's own optimum is not a K-team plan, so low-A results are not meaningful for finding the right answer. Above that there is **no clean trend**: for p = 2, P(feasible) ranged about 0.24-0.51 and P(optimal) about 0.2-0.5%, and p = 3 was erratic (for example P(feasible) 5% at 6x). Largest A tested (464) gave the highest P(feasible) at p = 2 (51%), but a huge penalty is not free: it shrinks the relative size of the real finance terms. Treat the sweep as noisy.
+Scenario A, A from 0.5x to 8x the smallest working penalty (29 to 464), p = 1, 2, 3, 4 restarts each. Below 58 the QUBO's own optimum is not a K-team plan, so low-A results are not meaningful for finding the right answer. Above that there is **no clean trend**: for p = 2, P(feasible) ranged about 0.10-0.51 and P(optimal) about 0.15-0.53%, and p = 3 was erratic (for example P(feasible) 5% at 6x). Largest A tested (464) gave the highest P(feasible) at p = 2 (51%), but a huge penalty is not free: it shrinks the relative size of the real finance terms. Treat the sweep as noisy.
 
 ## What did not work / limitations (real observations)
 1. No speed or quality advantage over classical methods at this size; classical ones were exact every time.
