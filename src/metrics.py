@@ -55,3 +55,18 @@ def sample_metrics(p, counts_by_int, bf, qubo_energies):
             "q_mean_feasible": q_mean, "best_int": best_int,
             "best_cost": best_cost, "cost_gap": best_cost - bf["cost"],
             "approx_ratio": approx_ratio, "feasible_found": bool(feas_counts)}
+
+
+def random_sampling_metrics(p, bf, qubo_energies, shots=8192, seed=0):
+    """Reference: sample plans uniformly at random (no quantum, no cleverness).
+
+    Any QAOA claim must be read against this. With 8,192 shots over 1,024
+    plans, random sampling already hits the optimum at least once, so
+    'best sampled quality' alone proves little; probabilities are the fair test.
+    """
+    rng = np.random.default_rng(seed)
+    draws = rng.integers(0, 2 ** p.n, shots)
+    counts = {}
+    for k in draws:
+        counts[int(k)] = counts.get(int(k), 0) + 1
+    return sample_metrics(p, counts, bf, qubo_energies)
