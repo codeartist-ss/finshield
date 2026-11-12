@@ -1,0 +1,10 @@
+# Versions this project was built and tested with (Python 3.12 sandbox AND the
+# team's stated Python 3.13 qiskit trio). Before your final commit, run
+#   pip freeze > requirements.txt
+# inside finshield-env if you want it to mirror your exact machine.
+qiskit==2.6.2
+qiskit-aer==0.18.2
+qiskit-optimization==0.7.0
+numpy==2.5.4
+scipy==1.18.1
+matplotlib==3.11.2
