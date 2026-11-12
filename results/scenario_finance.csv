@@ -1,0 +1,13 @@
+scenario,title,method,contained,loss_do_nothing,loss_avoided,disruption_cost,net_benefit
+A,Cloud provider compromise,Exact (brute force),Payment Switch + Clearing House + Cloud Provider,757.0,438.0,73.0,365.0
+A,Cloud provider compromise,Greedy,Payment Switch + Clearing House + Cloud Provider,757.0,438.0,73.0,365.0
+A,Cloud provider compromise,Simulated annealing,Payment Switch + Clearing House + Cloud Provider,757.0,438.0,73.0,365.0
+A,Cloud provider compromise,QAOA p=2 (best sampled),Payment Switch + Clearing House + Cloud Provider,757.0,438.0,73.0,365.0
+B,Payment switch DDoS,Exact (brute force),Payment Switch + Card Processor + Clearing House,840.5,437.5,58.0,379.5
+B,Payment switch DDoS,Greedy,Payment Switch + Card Processor + Clearing House,840.5,437.5,58.0,379.5
+B,Payment switch DDoS,Simulated annealing,Payment Switch + Card Processor + Clearing House,840.5,437.5,58.0,379.5
+B,Payment switch DDoS,QAOA p=3 (best sampled),Payment Switch + Card Processor + Clearing House,840.5,437.5,58.0,379.5
+C,Clearing house ransomware,Exact (brute force),Central Bank RTGS + Commercial Bank A + Clearing House,891.0,579.5,90.0,489.5
+C,Clearing house ransomware,Greedy,Central Bank RTGS + Commercial Bank A + Clearing House,891.0,579.5,90.0,489.5
+C,Clearing house ransomware,Simulated annealing,Central Bank RTGS + Commercial Bank A + Clearing House,891.0,579.5,90.0,489.5
+C,Clearing house ransomware,QAOA p=3 (best sampled),Central Bank RTGS + Payment Switch + Clearing House,891.0,582.5,93.0,489.5
