@@ -28,11 +28,13 @@ def sample_metrics(p, counts_by_int, bf, qubo_energies):
     n = p.n
     total = sum(counts_by_int.values())
     C, feas = bf["cost_table"], bf["feasible"]
-    opt_int = int(np.where(feas)[0][np.argmin(C[feas])])
     cmin, cmax = bf["cmin"], bf["cmax"]
+    # Ties happen (two different plans can cost exactly the same), so "optimal"
+    # means ANY feasible plan within 1e-9 of the best cost.
+    opt_ints = set(np.where(feas & (C <= cmin + 1e-9))[0].tolist())
     span = max(cmax - cmin, 1e-12)
 
-    p_opt = counts_by_int.get(opt_int, 0) / total
+    p_opt = sum(v for k, v in counts_by_int.items() if k in opt_ints) / total
     feas_counts = {k: v for k, v in counts_by_int.items() if feas[k]}
     n_feas = sum(feas_counts.values())
     p_feas = n_feas / total
@@ -54,7 +56,7 @@ def sample_metrics(p, counts_by_int, bf, qubo_energies):
     return {"p_optimal": p_opt, "p_feasible": p_feas, "q_best": q_best,
             "q_mean_feasible": q_mean, "best_int": best_int,
             "best_cost": best_cost, "cost_gap": best_cost - bf["cost"],
-            "approx_ratio": approx_ratio, "feasible_found": bool(feas_counts)}
+            "approx_ratio": approx_ratio, "n_optimal_plans": len(opt_ints), "feasible_found": bool(feas_counts)}
 
 
 def random_sampling_metrics(p, bf, qubo_energies, shots=8192, seed=0):
