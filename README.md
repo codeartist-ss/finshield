@@ -1,6 +1,6 @@
 # FinShield: quantum-assisted containment planning for cyber attacks on financial infrastructure
 
-*Qiskit Fall Fest 2026 Hackathon. Team: [TEAM NAME]. Domain: Disaster Response.*
+*Qiskit Fall Fest 2026 Hackathon. Team: Starry Night. Domain: Disaster Response.*
 
 **All data in this repository is synthetic and illustrative. No real institution, system, statistic or attacker is described. All money is in "synthetic USD millions". Everything runs on a classical simulator (Qiskit Aer); no real quantum hardware was used.**
 
@@ -103,4 +103,4 @@ docs/                          architecture.png, EXPLAINED.md
 
 ## AI assistance (please confirm wording)
 
-An AI assistant (Claude, by Anthropic) helped write the code, tests and documents under the team's direction, inspected the installed Qiskit packages, and ran the code and tests in its own sandbox. The team chose the problem, the formulation and the scenarios, and reviewed and ran the result. [TEAM: edit this paragraph to say exactly what you did yourselves.]
+An AI assistant (Claude, by Anthropic) helped write the code, tests and documents under the team's direction, inspected the installed Qiskit packages, and ran the code and tests in its own sandbox. The team chose the problem, the formulation and the scenarios, and reviewed and ran the result. 
